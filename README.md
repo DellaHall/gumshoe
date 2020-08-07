@@ -1,1 +1,2 @@
-Working to teach myself SFML.
+# Working to teach myself SFML.
+And maybe some github learning at the same time.
