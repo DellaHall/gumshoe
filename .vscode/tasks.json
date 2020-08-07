@@ -1,0 +1,36 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "cl.exe build active file",
+      "command": "cl.exe",
+      "args": [
+        "/Zi",
+        "/EHsc",
+        "/I",
+        "D:\\sfml\\SFML-2.5.1\\include",
+        "/MT",
+        "sfml-graphics.lib",
+        "/MT",
+        "sfml-system.lib",
+        "/MT",
+        "sfml-window.lib",
+        "/MT",
+        "sfml-audio.lib",
+        "/Fe:",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "${file}",
+        "/link",
+        "/LIBPATH:D:\\sfml\\SFML-2.5.1\\lib",
+      ],
+      "problemMatcher": ["$msCompile"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
