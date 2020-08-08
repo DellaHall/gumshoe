@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${default}",
-                "D:/sfml/SFML-2.5.1/include/"
+                "D:/cpp/SFML-2.5.1/include",
+                "D:/cpp/tmxlite/include"
             ],
             "defines": [
                 "_DEBUG",
