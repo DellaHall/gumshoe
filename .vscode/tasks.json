@@ -11,6 +11,8 @@
         "/Zi",
         "/EHsc",
         "/I",
+        "D:\\cpp\\nlohmann",
+        "/I",
         "D:\\cpp\\SFML-2.5.1\\include",
         "/MT",
         "sfml-graphics.lib",
@@ -26,7 +28,7 @@
         "${fileBasenameNoExtension}.exe",
         "${file}",
         "/link",
-        "/LIBPATH:D:\\cpp\\SFML-2.5.1\\lib",
+        "/LIBPATH:D:\\cpp\\SFML-2.5.1\\lib"
       ],
       "problemMatcher": ["$msCompile"],
       "group": {
