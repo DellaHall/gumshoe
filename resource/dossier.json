@@ -112,9 +112,9 @@
     "Zakarian"
   ],
   "pronouns": {
-    "M": ["he", "him", "his"],
-    "F": ["she", "her", "hers"],
-    "X": ["they", "them", "theirs"]
+    "M": ["he", "him", "his", "his"],
+    "F": ["she", "her", "her", "hers"],
+    "X": ["they", "them", "their", "theirs"]
   },
   "salutations": {
     "M": ["Mr."],

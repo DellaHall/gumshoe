@@ -3,4 +3,8 @@ helloworld.ilk
 helloworld.obj
 helloworld.pdb
 vc140.pdb
-helloworld.exe
+scenario.exe
+scenario.ilk
+
+scenario.obj
+scenario.pdb

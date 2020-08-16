@@ -13,8 +13,8 @@
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
-      "externalConsole": false,
-      "preLaunchTask": "C/C++: cl.exe build active file"
+      "externalConsole": true,
+      "preLaunchTask": "cl.exe build active file"
     }
   ]
 }
