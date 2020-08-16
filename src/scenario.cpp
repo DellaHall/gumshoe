@@ -35,7 +35,7 @@ int main() {
   shuffle(alphabet.begin(), alphabet.end(), rng);
 
   // Generate NPCs
-  json npcs;
+  scenario["npcs"] = {};
   for (int i = 0; i < 7; i++) {
     // Pick NPC Gender
     string gender = "X";
@@ -65,18 +65,42 @@ int main() {
     int s = (rand() % avail_salutes.size());
     string salutation = avail_salutes[s];
 
-    cout << salutation << " ";
-    cout << firstname << " ";
-    cout << lastname << " ";
-    cout << gender << " ";
-    cout << pronouns[0] << " ";
-    cout << pronouns[1] << " ";
-    cout << pronouns[2] << " ";
-    cout << pronouns[3] << " ";
-    cout << "\n";
+    // Add NPC to scenario json
+    scenario["npcs"][i]["firstname"] = firstname;
+    scenario["npcs"][i]["lastname"] = lastname;
+    scenario["npcs"][i]["gender"] = gender;
+    scenario["npcs"][i]["salutation"] = salutation;
+    scenario["npcs"][i]["pronouns"] = pronouns;
+    scenario["npcs"][i]["fullname"] = salutation + " " + firstname + " " + lastname;
   }
 
   // NPC 0 is always the victim
+  cout << scenario["npcs"][0]["fullname"].get<string>();
+  cout << " was brutally murdered in ";
+  cout << scenario["npcs"][0]["pronouns"][2].get<string>();
+  cout << " home earlier this evening.\n\n";
+  cout << "At the time of the murder...\n";
+  
+  // NPC 1
+  cout << "  " << scenario["npcs"][1]["fullname"].get<string>();
+  cout << " claims to have been with " << scenario["npcs"][2]["firstname"].get<string>() << ".\n";
+  // NPC 2
+  cout << "  " << scenario["npcs"][2]["fullname"].get<string>();
+  cout << " claims to have been with " << scenario["npcs"][1]["firstname"].get<string>() << ".\n";
+  // NPC 3
+  cout << "  " << scenario["npcs"][3]["fullname"].get<string>();
+  cout << " claims to have been with " << scenario["npcs"][4]["firstname"].get<string>() << ".\n";
+  // NPC 4
+  cout << "  " << scenario["npcs"][4]["fullname"].get<string>();
+  cout << " claims to have been with " << scenario["npcs"][3]["firstname"].get<string>() << ".\n";
+  // NPC 5
+  cout << "  " << scenario["npcs"][5]["fullname"].get<string>();
+  cout << " claims to have been alone.\n";
+  // NPC 6 - The Murderer
+  cout << "  " << scenario["npcs"][6]["fullname"].get<string>();
+  cout << " claims to have been with " << scenario["npcs"][4]["firstname"].get<string>() << ".\n";
+
+
 
   return 0;
 }
