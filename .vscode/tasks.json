@@ -13,6 +13,8 @@
         "/I",
         "D:\\cpp\\nlohmann",
         "/I",
+        "D:\\cpp\\rapidxml-1.13",
+        "/I",
         "D:\\cpp\\SFML-2.5.1\\include",
         "/MT",
         "sfml-graphics.lib",

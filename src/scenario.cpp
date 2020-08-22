@@ -4,15 +4,11 @@
 #include <json.hpp>
 #include <random>
 #include <ctime>
-#include "scenario.h"
 
-/** Generate a sleuth-style scenario */
-// Pick 7 characters from dossier.json
-// Assign each a surname and appropriate pronouns & salutations
-// Pick a victim
-// Pick a murderer
-// Create alibis
+using namespace std;
+using json = nlohmann::json;
 
+int main();
 
 
 int main() {
@@ -99,8 +95,6 @@ int main() {
   // NPC 6 - The Murderer
   cout << "  " << scenario["npcs"][6]["fullname"].get<string>();
   cout << " claims to have been with " << scenario["npcs"][4]["firstname"].get<string>() << ".\n";
-
-
 
   return 0;
 }

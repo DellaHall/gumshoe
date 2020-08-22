@@ -1,48 +1,50 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <json.hpp>
+#include "tilemap.cpp"
 
 using json = nlohmann::json;
 
+
 int main()
 {
-  // Create the main window
-  sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-  // Load a sprite to display
-  sf::Texture texture;
-  if (!texture.loadFromFile("resource/graphics/stfu.png"))
-      return EXIT_FAILURE;
-  sf::Sprite sprite(texture);
-  // Create a graphical text to display
-  sf::Font font;
-  if (!font.loadFromFile("resource/fonts/Hack-Bold.ttf"))
-      return EXIT_FAILURE;
-  sf::Text text("Hello SFML", font, 50);
-  // Load a music to play
-  sf::Music music;
-  if (!music.openFromFile("resource/sound/File_Mozart_-_Coronation_Mass_(Markevitch)_-_01._Kyrie.ogg"))
-      return EXIT_FAILURE;
-  // Play the music
-  //music.play();
-  // Start the game loop
-  while (window.isOpen())
-  {
-    // Process events
-    sf::Event event;
-    while (window.pollEvent(event))
+    // create the window
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tilemap");
+
+    // define the level with an array of tile indices
+    const int level[] =
     {
-        // Close window: exit
-        if (event.type == sf::Event::Closed)
-            window.close();
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+        1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
+        0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
+        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
+        0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+        0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+    };
+
+    // create the tilemap from the level definition
+    TileMap map;
+    if (!map.load("tileset.png", sf::Vector2u(32, 32), level, 16, 8))
+        return -1;
+
+    // run the main loop
+    while (window.isOpen())
+    {
+        // handle events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // draw the map
+        window.clear();
+        window.draw(map);
+        window.display();
     }
-    // Clear screen
-    window.clear();
-    // Draw the sprite
-    window.draw(sprite);
-    // Draw the string
-    window.draw(text);
-    // Update the window
-    window.display();
-  }
-  return EXIT_SUCCESS;
+
+    return 0;
 }
