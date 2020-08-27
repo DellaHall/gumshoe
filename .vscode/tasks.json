@@ -11,11 +11,11 @@
         "/Zi",
         "/EHsc",
         "/I",
-        "D:\\cpp\\nlohmann",
+        "external\\nlohmann",
         "/I",
-        "D:\\cpp\\rapidxml-1.13",
+        "external\\rapidxml-1.13",
         "/I",
-        "D:\\cpp\\SFML-2.5.1\\include",
+        "external\\SFML-2.5.1\\include",
         "/MT",
         "sfml-graphics.lib",
         "/MT",
@@ -30,7 +30,7 @@
         "${fileBasenameNoExtension}.exe",
         "${file}",
         "/link",
-        "/LIBPATH:D:\\cpp\\SFML-2.5.1\\lib"
+        "/LIBPATH:external\\SFML-2.5.1\\lib"
       ],
       "problemMatcher": [
         "$msCompile"

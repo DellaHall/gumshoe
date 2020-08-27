@@ -1,7 +1,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <json.hpp>
-#include "tilemap.cpp"
+#include "tmx.cpp"
 
 using json = nlohmann::json;
 
@@ -9,7 +9,7 @@ using json = nlohmann::json;
 int main()
 {
     // create the window
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Tilemap");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Hellote");
 
     // define the level with an array of tile indices
     const int level[] =

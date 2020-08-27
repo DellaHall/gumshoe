@@ -5,9 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${default}",
-                "D:/cpp/SFML-2.5.1/include",
-                "D:/cpp/nlohmann",
-                "D:/cpp/rapidxml-1.13"
+                "external/SFML-2.5.1/include",
+                "external/nlohmann",
+                "external/rapidxml-1.13"
             ],
             "defines": [
                 "_DEBUG",
