@@ -91,4 +91,9 @@ private:
   sf::Texture m_tileset;
 };
 
+int main() {
+  Tmx map1;
+  if (!map1.load("resource/maps/map1.tmx")) return -1;
 
+  return 0;
+}
