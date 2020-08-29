@@ -121,5 +121,32 @@
     "F": ["Ms.", "Miss", "Mrs."],
     "X": ["Mx."],
     "A": ["Prof.", "Dr.", "Mayor", "Rev.", "Captain"]
-  }
+  },
+  "rooms" : [
+    "foyer",
+    "library",
+    "dining room",
+    "office",
+    "kitchen",
+    "exercise Room",
+    "recording studio",
+    "game room",
+    "theater",
+    "bar",
+    "hot tub",
+    "garage",
+    "workshop",
+    "garden",
+    "shed"
+  ],
+  "weapons": [
+    ["sword", "piercing"],
+    ["knife", "slashing"],
+    ["tire iron", "bludgeoning"],
+    ["power cable", "strangling"],
+    ["dumbell", "bludgeoning"],
+    ["drumstick", "bludgeoning"],
+    ["pool chemicals", "poison"],
+    ["shovel", "bludgeoning"]
+  ]
 }
