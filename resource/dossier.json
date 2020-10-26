@@ -128,7 +128,7 @@
     "dining room",
     "office",
     "kitchen",
-    "exercise Room",
+    "exercise room",
     "recording studio",
     "game room",
     "theater",
@@ -136,8 +136,7 @@
     "hot tub",
     "garage",
     "workshop",
-    "garden",
-    "shed"
+    "garden"
   ],
   "weapons": [
     ["sword", "piercing"],
@@ -146,7 +145,7 @@
     ["power cable", "strangling"],
     ["dumbell", "bludgeoning"],
     ["drumstick", "bludgeoning"],
-    ["pool chemicals", "poison"],
+    ["pool chemicals", "poisoning"],
     ["shovel", "bludgeoning"]
   ]
 }

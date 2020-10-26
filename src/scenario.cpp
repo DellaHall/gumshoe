@@ -5,7 +5,6 @@
 #include <random>
 #include <ctime>
 
-using namespace std;
 using json = nlohmann::json;
 
 json scenario_gen(int seed = time(nullptr)) {
@@ -15,12 +14,12 @@ json scenario_gen(int seed = time(nullptr)) {
 
   scenario["seed"] = seed;
   // Load dossier
-  ifstream in_file("resource/dossier.json");
+  std::ifstream in_file("resource/dossier.json");
   json dossier;
   in_file >> dossier;
 
   // Shuffle the alphabet
-  vector<int> alphabet;
+  std::vector<int> alphabet;
   for (int i = 0; i < 26; i++) {
     alphabet.push_back(i);
   }
@@ -30,24 +29,24 @@ json scenario_gen(int seed = time(nullptr)) {
   scenario["npcs"] = {};
   for (int i = 0; i < 7; i++) {
     // Pick NPC Gender
-    string gender = "X";
+    std::string gender = "X";
     int g = (rand() % 20) + 1;
     if (g >= 1 && g <= 9) { gender = "M"; }
     if (g >= 10 && g <= 18) { gender = "F"; }
 
     // Pick Pronouns
-    vector<string> pronouns = dossier["pronouns"][gender];
+    std::vector<std::string> pronouns = dossier["pronouns"][gender];
 
     // Name the NPC
-    string firstname = dossier[gender][alphabet[i]].get<string>();
-    string lastname = dossier["surnames"][alphabet.end()[-(i + 1)]].get<string>();
+    std::string firstname = dossier[gender][alphabet[i]].get<std::string>();
+    std::string lastname = dossier["surnames"][alphabet.end()[-(i + 1)]].get<std::string>();
     // Sometimes make NPCs related
     if (int ((rand()) % 3) == 0) {
-      lastname = dossier["surnames"][alphabet.end()[-1]].get<string>();
+      lastname = dossier["surnames"][alphabet.end()[-1]].get<std::string>();
     }
 
     // Pick NPC's Saluation
-    vector<string> avail_salutes;
+    std::vector<std::string> avail_salutes;
     // Always include gender-specific salutations
     avail_salutes.insert(avail_salutes.end(), dossier["salutations"][gender].begin(), dossier["salutations"][gender].end());
     // Sometimes include other salutations
@@ -55,7 +54,7 @@ json scenario_gen(int seed = time(nullptr)) {
       avail_salutes.insert(avail_salutes.end(), dossier["salutations"]["A"].begin(), dossier["salutations"]["A"].end());
     }
     int s = (rand() % avail_salutes.size());
-    string salutation = avail_salutes[s];
+    std::string salutation = avail_salutes[s];
 
     // Add NPC to scenario json
     scenario["npcs"][i]["firstname"] = firstname;
@@ -83,7 +82,7 @@ json scenario_gen(int seed = time(nullptr)) {
   
 
   // Pick Rooms - Need 3 for alibis, 1 for murder
-  vector<string> rooms = dossier["rooms"];
+  std::vector<std::string> rooms = dossier["rooms"];
   shuffle(rooms.begin(), rooms.end(), rng);
   scenario["npcs"][0]["room"] = rooms[0];
   scenario["npcs"][1]["room"] = rooms[1];
@@ -106,39 +105,39 @@ int main() {
   json scenario = scenario_gen();
 
   // NPC 0 is always the victim
-  cout << scenario["npcs"][0]["fullname"].get<string>();
-  cout << " was brutally murdered in ";
-  cout << scenario["npcs"][0]["pronouns"][2].get<string>();
-  cout << " home earlier this evening.\n\n";
-  cout << "At the time of the murder...\n";
+  std::cout << scenario["npcs"][0]["fullname"].get<std::string>();
+  std::cout << " was brutally murdered in ";
+  std::cout << scenario["npcs"][0]["pronouns"][2].get<std::string>();
+  std::cout << " home earlier this evening.\n\n";
+  std::cout << "At the time of the murder...\n";
 
   for (int i = 1; i < 7; i++) {
-    cout << "  " << scenario["npcs"][i]["fullname"].get<string>();
+    std::cout << "  " << scenario["npcs"][i]["fullname"].get<std::string>();
     int alibi = scenario["npcs"][i]["alibi"].get<int>();
     if (alibi == i) {
-      cout << " claims to have been alone" ;
+      std::cout << " claims to have been alone" ;
     } else {
-      cout << " claims to have been with " ;
-      cout << scenario["npcs"][alibi]["firstname"].get<string>();
+      std::cout << " claims to have been with " ;
+      std::cout << scenario["npcs"][alibi]["firstname"].get<std::string>();
     }
-    cout << " in the " << scenario["npcs"][i]["room"].get<string>();
-    cout << ".\n";
+    std::cout << " in the " << scenario["npcs"][i]["room"].get<std::string>();
+    std::cout << ".\n";
   }
 
-  cout << "\n";
-  cout << scenario["npcs"][6]["firstname"].get<string>();
-  cout << " killed ";
-  cout << scenario["npcs"][0]["firstname"].get<string>();
-  cout << " in the ";
-  cout << scenario["npcs"][0]["room"].get<string>();
-  cout << " by ";
-  cout << scenario["damage"].get<string>();
-  cout << " ";
-  cout << scenario["npcs"][0]["pronouns"][1].get<string>();
-  cout << " with the ";
-  cout << scenario["weapon"].get<string>();
-  cout << ".\n\n";
-  cout << scenario;
+  std::cout << "\n";
+  std::cout << scenario["npcs"][6]["firstname"].get<std::string>();
+  std::cout << " killed ";
+  std::cout << scenario["npcs"][0]["firstname"].get<std::string>();
+  std::cout << " in the ";
+  std::cout << scenario["npcs"][0]["room"].get<std::string>();
+  std::cout << " by ";
+  std::cout << scenario["damage"].get<std::string>();
+  std::cout << " ";
+  std::cout << scenario["npcs"][0]["pronouns"][1].get<std::string>();
+  std::cout << " with the ";
+  std::cout << scenario["weapon"].get<std::string>();
+  std::cout << ".\n\n";
+  std::cout << scenario;
 
   return 0;
 }

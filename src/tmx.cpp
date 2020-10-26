@@ -21,6 +21,8 @@ public:
 
     doc.parse<0>(&buffer[0]);
 
+    // I think what i need to do is for thru the xml, and convert it to a json...
+
     rapidxml::xml_node<> *root = doc.first_node("map");
     rapidxml::xml_node<> *child = root->first_node("tileset");
 
